@@ -41,9 +41,9 @@ print("You rolled a " + weapons[weaponRoll] + " as your weapon, with a combat st
 
 combatStrength += weaponRoll + 1
 
-if weaponRoll <= 2:
+if weaponRoll + 1 <= 2:
     print("You rolled a weak weapon, friend.")
-elif weaponRoll <= 4:
+elif weaponRoll + 1 <= 4:
     print("Your element is moderately strong.")
 else:
     print("Nice weapon, friend.")
