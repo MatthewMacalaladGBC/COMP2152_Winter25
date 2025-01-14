@@ -1,4 +1,4 @@
-# Coding Questions Week 02
+# Practice Coding Questions Week 02
 # Matthew Macalalad, 101510305
 
 import random
