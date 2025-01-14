@@ -8,3 +8,8 @@ print("Elements: ", elements)
 
 # def func_name():
 #        return True
+
+# def say_greeting(name, message = "Hi"):
+#     print(f"{message}, {name}")
+
+# say_greeting("Matthew", "Hello")
