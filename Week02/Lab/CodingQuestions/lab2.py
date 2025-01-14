@@ -14,3 +14,12 @@ print("Elements: ", elements)
 
 # say_greeting("Matthew")
 # say_greeting("Matthew", "Hello")
+
+def get_valid_int_input(prompt):
+    while True:
+        try:
+            return int(input(prompt))
+        except ValueError:
+            print("Error: Please enter a valid integer")
+            continue
+
