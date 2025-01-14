@@ -22,7 +22,7 @@ def get_valid_int_input(prompt):
         try:
             return int(input(prompt))
         except ValueError:
-            print("Error: Please enter a valid integer")
+            print("Error: Please enter a valid integer!")
             continue
 
 try:
@@ -37,5 +37,7 @@ try:
         print("Your element is moderately strong.")
     else:
         print("Nice element.")
+except IndexError:
+    print("Error: Invalid element index!")
 except Exception as e:
-    print("")
+    print(f"An unexpected error occurred: {e}")
