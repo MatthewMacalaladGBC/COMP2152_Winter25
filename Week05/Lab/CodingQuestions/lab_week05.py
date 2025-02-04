@@ -195,7 +195,7 @@ if not input_invalid:
         else:
             print("    |    Monster attacks first!")
 
-        if not (attack_roll % 2 != 0):
+        if not (attack_roll % 2 == 0):
             print("    |", end="    ")
             input("You strike (Press enter)")
             # Lab 5: Question 5
