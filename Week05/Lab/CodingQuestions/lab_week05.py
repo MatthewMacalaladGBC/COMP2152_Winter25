@@ -224,10 +224,23 @@ if not input_invalid:
         print("    |", end="    ")
 
         # Lab 5 - Question 1: 
+        hero_name = input("Enter your Hero's name (in two words): ")
+        name = hero_name.split()
+        if len(name) != 2:
+            print("    |    Please enter your Hero's name with two parts (separated by a space).")
+            tries += 1
+        else:
+            if not name[0].isalpha() + name[1].isalpha():
+                print("    |    Please enter an alphabetical name.")
+                tries += 1
+            else:
+                short_name = name[0][0:2:1] + name[1][0:2:1]
+                print("    |    I'm going to call you " + short_name + " for short.")
+                input_invalid = False
         
 
     if not input_invalid:
         stars_display = "*" * num_stars
         # Lab 5 - Question 2: 
-        
+        print()
 
