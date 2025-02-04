@@ -2,7 +2,7 @@
 import random
 
 # Put all the functions into another file and import them
-import functions_lab05_solution
+import functions_lab05
 
 # Game Flow
 # Define two Dice
@@ -242,5 +242,5 @@ if not input_invalid:
     if not input_invalid:
         stars_display = "*" * num_stars
         # Lab 5 - Question 2: 
-        print()
+        print(f"    |    Hero {short_name} gets <{stars_display}> stars.")
 
