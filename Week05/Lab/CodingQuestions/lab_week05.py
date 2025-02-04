@@ -189,7 +189,13 @@ if not input_invalid:
         # Lab 5: Question 5:
         input("Roll to see who strikes first (Press Enter)")
         # Lab 5: Question 5
-        if not (attack_roll % 2 == 0):
+        attack_roll = random.choice([1, 2, 3, 4, 5, 6])
+        if attack_roll % 2 != 0:
+            print("    |    Hero attacks first!")
+        else:
+            print("    |    Monster attacks first!")
+
+        if not (attack_roll % 2 != 0):
             print("    |", end="    ")
             input("You strike (Press enter)")
             # Lab 5: Question 5
