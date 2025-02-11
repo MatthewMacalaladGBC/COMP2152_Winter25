@@ -264,4 +264,4 @@ if not input_invalid:
         stars_display = "*" * num_stars
         print("    |    Hero " + short_name + " gets <" + stars_display + "> stars")
         # Lab 06 - Question 3 and 4
-        functions_lab06.save_game(winner, short_name, num_stars)
+        functions_lab06.save_game(winner, hero_name=short_name, num_stars=num_stars)
