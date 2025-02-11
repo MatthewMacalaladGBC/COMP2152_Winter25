@@ -190,7 +190,7 @@ if not input_invalid:
                 combat_strength += crazy_level
                 print("combat strength: " + str(combat_strength))
                 print("health points: " + str(health_points))
-        print("num_dream_lvls: " + num_dream_lvls)
+        print("num_dream_lvls: ", num_dream_lvls)
 
     # Fight Sequence
     # Loop while the monster and the player are alive. Call fight sequence functions
