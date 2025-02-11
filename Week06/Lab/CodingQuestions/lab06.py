@@ -2,7 +2,7 @@
 import random
 
 # Put all the functions into another file and import them
-import Week06.Lab.CodingQuestions.functions_lab06 as functions_lab06
+import functions_lab06
 
 # Game Flow
 # Define two Dice
@@ -84,6 +84,7 @@ if not input_invalid:
     print("    |    The hero\'s weapon is " + str(weapons[weapon_roll - 1]))
 
     # Lab 06 - Question 5b
+    functions_lab06.adjust_combat_strength(combat_strength, m_combat_strength)
     
     # Weapon Roll Analysis
     print("    ------------------------------------------------------------------")
