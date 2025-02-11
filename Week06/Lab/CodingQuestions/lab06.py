@@ -234,6 +234,12 @@ if not input_invalid:
                 else:
                     num_stars = 2
 
+    # Lab 06 - Question 3 and 4
+    if (m_health_points <= 0):
+        winner = "Hero"
+    else:
+        winner = "Monster"
+
     # Final Score Display
     tries = 0
     input_invalid = True
@@ -257,4 +263,5 @@ if not input_invalid:
     if not input_invalid:
         stars_display = "*" * num_stars
         print("    |    Hero " + short_name + " gets <" + stars_display + "> stars")
-
+        # Lab 06 - Question 3 and 4
+        functions_lab06.save_game(winner, short_name, num_stars)
