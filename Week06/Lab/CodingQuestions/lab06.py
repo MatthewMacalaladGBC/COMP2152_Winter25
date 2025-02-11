@@ -171,15 +171,26 @@ if not input_invalid:
     print("    |    The monster's combat strength is now " + str(
         m_combat_strength) + " using the " + power_roll + " magic power")
     # Lab 06 - Question 6
-    # Call Recursive function
-    print("    |", end="    ")
-    num_dream_lvls = input("How many dream levels do you want to go down?")
-    if num_dream_lvls != 0:
-        health_points -= 1
-        crazy_level = functions_lab06.inception_dream(num_dream_lvls)
-        combat_strength += crazy_level
-        print("combat strength: " + str(combat_strength))
-        print("health points: " + str(health_points))
+    num_dream_lvls = -1
+    while (num_dream_lvls < 0 or num_dream_lvls > 3):
+        # Call Recursive function
+        print("    |", end="    ")
+        num_dream_lvls = input("How many dream levels do you want to go down?")
+        if ((num_dream_lvls=="")):
+            num_dream_lvls = -1
+            print("Number entered must be a whole numebr between 0 and 3 (inclusive). Try again.")
+        else:
+            num_dream_lvls = int(num_dream_lvls)
+            if ((num_dream_lvls < 0) or (num_dream_lvls > 3)):
+                num_dream_lvls = -1
+                print("Number entered must be a whole numebr between 0 and 3 (inclusive). Try again.")
+            elif (not num_dream_lvls == 0):
+                health_points -= 1
+                crazy_level = functions_lab06.inception_dream(num_dream_lvls)
+                combat_strength += crazy_level
+                print("combat strength: " + str(combat_strength))
+                print("health points: " + str(health_points))
+        print("num_dream_lvls: " + num_dream_lvls)
 
     # Fight Sequence
     # Loop while the monster and the player are alive. Call fight sequence functions
