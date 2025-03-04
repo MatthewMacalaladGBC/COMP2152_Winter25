@@ -52,6 +52,14 @@ print(f"[Before Fork] Process ID: {os.getpid()}")
 #######
 # pid = os.fork()
 
+###
+# Instead of os.fork(), which is not supported on Windows, we can use the following code:
+#   context = mp.get_context('spawn')
+#   p = context.Process(target=function_name, args=(q,))
+#   p.start()
+#   p.join()
+###
+
 # if pid == 0:
 #     # Child process
 #     print(f"[Child Process] PID: {os.getpid()}, Parent PID {os.getppid()}")
