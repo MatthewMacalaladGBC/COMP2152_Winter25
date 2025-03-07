@@ -2,7 +2,7 @@
 import random
 
 # Put all the functions into another file and import them
-import functions_lab09
+import functions
 
 
 # Game Flow
@@ -82,7 +82,7 @@ m_health_points = random.choice(big_dice_options)
 print("Player rolled " + str(m_health_points) + " health points for the monster")
 
 try:
-    m_health_points = functions_lab09.hero_attacks("string1", "string2")
+    m_health_points = functions.hero_attacks("string1", "string2")
 except TypeError as te:
     print("Error Class:" + str(te))
 
@@ -95,18 +95,18 @@ while m_health_points > 0 and health_points > 0:
     if not (attack_roll % 2 == 0):
         input("You strike (Press enter)")
         # Hero Attacks First
-        m_health_points = functions_lab09.hero_attacks(combat_strength, m_health_points)
+        m_health_points = functions.hero_attacks(combat_strength, m_health_points)
         if m_health_points != 0:
             input("The monster strikes (Press enter)!!!")
             # Monster Attacks Back
-            health_points = functions_lab09.monster_attacks(m_combat_strength, health_points)
+            health_points = functions.monster_attacks(m_combat_strength, health_points)
 
     else:
         # Monster Attacks First
         input("The Monster strikes (Press enter)")
-        health_points = functions_lab09.monster_attacks(m_combat_strength, health_points)
+        health_points = functions.monster_attacks(m_combat_strength, health_points)
         if health_points != 0:
             input("The hero strikes!! (Press enter)")
             # Hero Attacks Back
-            m_health_points = functions_lab09.hero_attacks(combat_strength, m_health_points)
+            m_health_points = functions.hero_attacks(combat_strength, m_health_points)
 
