@@ -8,7 +8,7 @@ from hero import Hero
 from monster import Monster
 import functions
 
-print("Operating System: ", os.name())
+print("Operating System: ", os.name)
 print("Python Version: ", platform.python_version())
 
 # Define two Dice
