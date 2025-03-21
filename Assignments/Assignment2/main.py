@@ -181,7 +181,7 @@ while monster.health_points > 0 and hero.health_points > 0:
             print("------------------------------------------------------------------")
             input("    |    The monster strikes (Press enter)!!!")
             monster.monster_attacks(hero)
-            if health_points == 0:
+            if hero.health_points == 0:
                 num_stars = 1
             else:
                 num_stars = 2
