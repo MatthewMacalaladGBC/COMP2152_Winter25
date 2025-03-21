@@ -1,10 +1,6 @@
 # Import the random library to use for the dice later
 import random
 
-# Will the line below print when you import function.py into main.py?
-# print("Inside function.py")
-
-
 def use_loot(belt, health_points):
     good_loot_options = ["Health Potion", "Leather Boots"]
     bad_loot_options = ["Poison Potion"]
@@ -46,7 +42,7 @@ def collect_loot(loot_options, belt):
     return loot_options, belt
 
 # Recursion
-# You can choose to go crazy, but it will reduce your health points by 5
+# You can choose to go crazy, but it will reduce your health points by 1 per level
 def inception_dream(num_dream_lvls):
     num_dream_lvls = int(num_dream_lvls)
     # Base Case
@@ -59,39 +55,58 @@ def inception_dream(num_dream_lvls):
 
     # Recursive Case
     else:
-        # inception_dream(5)
-        # 1 + inception_dream(4)
-        # 1 + 1 + inception_dream(3)
-        # 1 + 1 + 1 + inception_dream(2)
-        # 1 + 1 + 1 + 1 + inception_dream(1)
-        # 1 + 1 + 1 + 1 + 2
         return 1 + int(inception_dream(num_dream_lvls - 1))
 
 
 # Lab 06 - Question 3 and 4
 def save_game(winner, hero_name="", num_stars=0):
-    with open("save.txt", "a") as file:
-        if winner == "Hero":
-            file.write(f"Hero {hero_name} has killed a monster and gained {num_stars} stars.\n")
-        elif winner == "Monster":
-            file.write("Monster has killed the hero previously\n")
+    total_kills = load_monster_kills()
 
-# Lab 06 - Question 5a
+    try:
+        with open("save.txt", "r") as file:
+            lines = file.readlines()
+    except FileNotFoundError:
+        lines = []
+
+    lines = [line for line in lines if "Total monsters killed" not in line]
+
+    if winner == "Hero":
+        total_kills += 1
+        lines.append(f"Hero {hero_name} has killed a monster and gained {num_stars} stars.\n")
+    else:
+        lines.append("Monster has killed the hero previously\n")
+
+    lines.append(f"Total monsters killed: {total_kills}\n")
+
+    with open("save.txt", "w") as file:
+        file.writelines(lines)
+
+def load_monster_kills():
+    try:
+        with open("save.txt", "r") as file:
+            lines = file.readlines()
+            last_line = lines[-1].strip()
+            if "Total monsters killed" in last_line:
+                return int(last_line.split(": ")[-1])
+    except FileNotFoundError:
+        pass
+    return 0
+
 def load_game():
     try:
         with open("save.txt", "r") as file:
             print("    |    Loading from saved file ...")
             lines = file.readlines()
             if lines:
-                last_line = lines[-1].strip()
-                print(last_line)
-                return last_line
+                last_result = lines[-2].strip() # Second last line, as last line is now always total monsters killed
+                print(last_result)
+                return last_result
     except FileNotFoundError:
         print("No previous game found. Starting fresh.")
         return None
 
 # Lab 06 - Question 5b
-def adjust_combat_strength(combat_strength, m_combat_strength):
+def adjust_combat_strength(hero, monster):
     # Lab Week 06 - Question 5 - Load the game
     last_game = load_game()
     if last_game:
@@ -99,9 +114,9 @@ def adjust_combat_strength(combat_strength, m_combat_strength):
             num_stars = int(last_game.split()[-2])
             if num_stars > 3:
                 print("    |    ... Increasing the monster's combat strength since you won so easily last time")
-                m_combat_strength += 1
+                monster.combat_strength += 1
         elif "Monster has killed the hero" in last_game:
-            combat_strength += 1
+            hero.combat_strength += 1
             print("    |    ... Increasing the hero's combat strength since you lost last time")
         else:
             print("    |    ... Based on your previous game, neither the hero nor the monster's combat strength will be increased")
