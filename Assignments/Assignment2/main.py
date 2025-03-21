@@ -145,9 +145,10 @@ while (num_dream_lvls < 0 or num_dream_lvls > 3 or num_dream_lvls >= hero.health
     # Call Recursive function
     try:
         print("    |", end="    ")
-        num_dream_lvls = input("How many dream levels do you want to go down? The deeper you go, the more strength you gain, and the more hp you lose... (Enter a number 0-3)")
-        # If the value entered was not an integer, set the number of dream levels to -1 and loop again 
+        num_dream_lvls = int(input("How many dream levels do you want to go down? The deeper you go, the more strength you gain, and the more hp you lose... (Enter a number 0-3)"))
     except ValueError:
+        # If the value entered was not an integer, set the number of dream levels to -1 and loop again 
+        num_dream_lvls = -1
         print("Number entered must be a whole number between 0-3 inclusive, and lower than your current hp. Try again")
 
     health_points -= num_dream_lvls
