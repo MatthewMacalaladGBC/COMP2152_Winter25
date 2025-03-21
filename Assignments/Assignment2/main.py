@@ -151,14 +151,14 @@ while (num_dream_lvls < 0 or num_dream_lvls > 3 or num_dream_lvls >= hero.health
         num_dream_lvls = -1
         print("Number entered must be a whole number between 0-3 inclusive, and lower than your current hp. Try again")
 
-    health_points -= num_dream_lvls
+    hero.health_points -= num_dream_lvls
     crazy_level = functions.inception_dream(num_dream_lvls)
-    combat_strength += crazy_level
+    hero.combat_strength += crazy_level
     
     if num_dream_lvls > 0:
         print("num_dream_lvls: ", num_dream_lvls)
-        print("Your combat strength increased to " + str(combat_strength))
-        print("Your health points decreased to " + str(health_points))
+        print("Your combat strength increased to " + str(hero.combat_strength))
+        print("Your health points decreased to " + str(hero.health_points))
 
 # Fight Sequence
 # Loop while the monster and the player are alive. Call fight sequence functions
